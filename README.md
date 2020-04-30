@@ -12,7 +12,7 @@ python3 simMetaG.py -i CoronaHaplo -o  Corona_1_reads -n 10
 
 ```
 
-## How to simualte haplotypes?
+## How to simulate haplotypes?
 To simulate haplotypes, use the `simHaplo.py` script. Several parameters can be tuned as follow:
 ```
 simHaplo.py -i inputFasta -o outputDir -k varFreq -r recombFreq -s strainsNumber -n haploNumber
