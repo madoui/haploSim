@@ -2,7 +2,7 @@
 haploSim contains a couple of python scripts to 
 1. simulate haplotypes according to a random markovian chain along a binary evolutionnary tree (simHaplo.py)
 2. generate metagenomic illumina data from a random admixture of simulated haplotypes (simMetaG.py)
-3. compute the pairwise (simHaplo.py) and global (simMetaG.py) nucleotide diversity `$\pi$`
+3. compute the pairwise (simHaplo.py) and global (simMetaG.py) nucleotide diversity (π)
 
 ## Quick example on Coronavirus
 This example simulates 16 haplotypes with default settings and generates illumina reads
