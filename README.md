@@ -1,5 +1,5 @@
 # haploSim
-Generate metagenomic data from an admixture of haplotypes.
+Simulate haplotypes according to a random markovian chain along a binary evolutionnary tree. Generate metagenomic illumina data from a random admixture of simulated haplotypes. 
 
 ## Quick example on Coronavirus
 
@@ -21,13 +21,11 @@ simHaplo.py -i inputFasta -o outputDir -k varFreq -r recombFreq -s strainsNumber
    -r recombination frequency (default 0.0001)
    -s number of initial strains to generate (default 3)
    -n number of haplotypes to generate (default 10)
-   -g genome size (default 1,000,000)
-   -l read length (default 100)
    -m minimum abundance of a haplotype (default 10x)
  ```
 
 ## How to simulate metagenomic reads from a haplotypes admixture?
-Once the haplotypes have been created, use `simMetaG` to generate illumina reads on a random admixture of haplotypes. Several parameters can tuned as follow:
+Once the haplotypes have been created, use `simMetaG` to generate illumina reads on a random admixture of haplotypes. You need the `wgsim` program (part of samtools) in you $PATH. Several parameters can tuned as follow:
 ```
  simMetaG.py -i inputHaplo -o outputDir -n haploNumber ...more options...>
 
