@@ -184,7 +184,7 @@ def main(argv):
    varFreq = 0.01
    varDisp = 0.001
    recombFreq = 0.0001
-   strainsNumber = 3
+   strainsNumber = 16
    haploNumber = 10
    readLength = 100
    minAbundance = 10
@@ -196,7 +196,7 @@ def main(argv):
    -k variant frequency (default 0.01)
    -d variant frequency dispersion (default 0.001)
    -r recombination frequency (default 0.0001)
-   -s number of initial strains to generate (default 3)
+   -s number of initial strains to generate (default 16)
    -n number of haplotypes to generate (default 10)
    -g genome size (default 1000000)
    -l read leangth (default 100)
