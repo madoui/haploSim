@@ -1,5 +1,5 @@
 # haploSim
-haploSim contains a couple of python scripts to 
+haploSim contains a couple of python scripts to
 1. simulate haplotypes according to a random markovian chain along a binary evolutionnary tree (simHaplo.py)
 2. generate metagenomic illumina data from a random admixture of simulated haplotypes (simMetaG.py)
 3. compute the pairwise (simHaplo.py) and global (simMetaG.py) nucleotide diversity (π)
@@ -22,7 +22,7 @@ simHaplo.py -i inputFasta -o outputDir -k varFreq -r recombFreq -s strainsNumber
    -k variant frequency (default 0.01)
    -d variant frequency dispersion (default 0.001)
    -r recombination frequency (default 0.0001)
-   -s number of initial strains to generate (default 3)
+   -s number of initial strains to generate (default 16)
    -n number of haplotypes to generate (default 10)
    -m minimum abundance of a haplotype (default 10x)
  ```
@@ -38,4 +38,3 @@ Once the haplotypes have been created, use `simMetaG` to generate illumina reads
    -l read leangth (default 100)
    -m minimum abundance of an haplotype (default 10x)
 ```
-
