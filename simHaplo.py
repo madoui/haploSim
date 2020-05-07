@@ -31,7 +31,6 @@ def parse_sequences(filename: str, ordered: bool=False) -> Dict[str, str]:
     with open(filename) as sequences:
         for line in sequences:
             if line.startswith('>'):
-
                 last_name = line[1:-1]
                 print (last_name)
                 result[last_name] = []
