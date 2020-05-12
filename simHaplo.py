@@ -203,7 +203,7 @@ def main(argv):
 
    """
    try:
-      opts, args = getopt.getopt(argv,"hi:o:k:v:r:s:n:g:l:m:")
+      opts, args = getopt.getopt(argv,"hi:o:k:v:r:s:n:d:g:l:m:")
    except getopt.GetoptError:
       print (usageMessage)
       sys.exit(2)
