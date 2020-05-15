@@ -11,7 +11,7 @@
 ##################################################
 
 from numpy import loadtxt
-import numpy as np
+import random
 import sys,os,getopt
 import glob
 
@@ -38,7 +38,7 @@ def getHaplo (haploDir):
         pi_i_j[sp] = sp_pi
     return pi_i_j
 
-def generateHaploAbundance( all_pi_i_j, n , haplodir, outputDir, read_length, minAbundance, sampleID):
+def generateHaploAbundance( all_pi_i_j, n , haplodir, outputDir, read_length, minAbundance, maxAbundance, sampleID):
     """ Generate n random haplotypes abundances and compute pi (nucleotide diversity) """
     for sp in all_pi_i_j:
         spp = sp.split("/")
@@ -51,7 +51,7 @@ def generateHaploAbundance( all_pi_i_j, n , haplodir, outputDir, read_length, mi
         except FileExistsError:
             print("Some files already exist...")
         pi_i_j = all_pi_i_j[sp]
-        abundances = [int(np.random.random()*100)+ minAbundance for i in range(n)]
+        abundances = [random.randrange(minAbundance,maxAbundance+1) for i in range(n)] # +1 else would be excluded
         hapFreq  = [abundances[i]/sum(abundances) for i in range(len(abundances))]
         genomeSize = getGenomeSize( sp + "/seeds_0.fasta")
         log = open(readsPath+"/log.txt", "a")
@@ -79,6 +79,7 @@ def main(argv):
    haploNumber = 5
    readLength = 100
    minAbundance = 10
+   maxAbundance = 100
    usageMessage = """
    simMetaG.py -i inputHaplo -o outputDir -n haploNumber -m <...more options...>
 
@@ -86,11 +87,12 @@ def main(argv):
    -o output directory
    -n minimum of haplotypes per species (default 5)
    -l read leangth (default 100)
-   -m minimum abundance of an haplotype (default 10x)
+   -m minimum (included) abundance of an haplotype (default 10x)
+   -M maximal (included) abundance of an haplotype (default 100x)
 
    """
    try:
-      opts, args = getopt.getopt(argv,"hi:o:n:l:m:")
+      opts, args = getopt.getopt(argv,"hi:o:n:l:m:M:")
    except getopt.GetoptError:
       print (usageMessage)
       sys.exit(2)
@@ -108,6 +110,8 @@ def main(argv):
         readLength = int(arg)
       elif opt in ("-m"):
         minAbundance = int(arg)
+      elif opt in ("-M"):
+        maxAbundance = int(arg)
    if not os.path.exists(inputHaplo):
        print (inputHaplo, " is not a file")
        print (usageMessage)
@@ -120,6 +124,6 @@ def main(argv):
    pi_i_j = getHaplo(inputHaplo)
 
    sampleID = 1
-   generateHaploAbundance(pi_i_j, haploNumber, inputHaplo, outputDir, readLength, minAbundance, sampleID)
+   generateHaploAbundance(pi_i_j, haploNumber, inputHaplo, outputDir, readLength, minAbundance, maxAbundance, sampleID)
 
 main(sys.argv[1:])
